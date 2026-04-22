@@ -77,13 +77,15 @@ Create table Grade_List(
 );
 
 
-Update Grade_Nums Set hw_avg=avg(Grade_out_of_hund) where student_id =S0001 and CRN=C0001 and Grade_type=hw);
-Update Grade_Nums Set Proj_avg=avg(Grade_out_of_hund) where student_id =S0001 and CRN=C0001 and Grade_type=Proj);
-Update Grade_Nums Set Test_avg=avg(Grade_out_of_hund) where student_id =S0001 and CRN=C0001 and Grade_type=Test);
-Update Grade_Nums Set Partic_avg=avg(Grade_out_of_hund) where student_id =S0001 and CRN=C0001 and Grade_type=Partic);
-Update Grade_Nums Set other_avg=avg(Grade_out_of_hund) where student_id =S0001 and CRN=C0001 and Grade_type=other);
+Update Grade_Nums Set hw_avg=avg(Grade_out_of_hund) where student_id =S0001 and CRN=C0001 and Grade_type='hw';
+Update Grade_Nums Set Proj_avg=avg(Grade_out_of_hund) where student_id =S0001 and CRN=C0001 and Grade_type='Proj';
+Update Grade_Nums Set Test_avg=avg(Grade_out_of_hund) where student_id =S0001 and CRN=C0001 and Grade_type='Test';
+Update Grade_Nums Set Partic_avg=avg(Grade_out_of_hund) where student_id =S0001 and CRN=C0001 and Grade_type='Partic';
+Update Grade_Nums Set other_avg=avg(Grade_out_of_hund) where student_id =S0001 and CRN=C0001 and Grade_type='other';
 Update Grade_Nums Set Final_grade=((hw_avg + Proj_avg + Test_avg + Partic_avg + other_avg)/100);
 
+Update Students Set CRN_1_Grade=Final_grade where Student_ID=S0001 and CRN=C0001; 
+Update Courses Set Student_Final_grade_1=Final_grade where Student_ID=S0001 and CRN=C0001;
 
 
 INSERT INTO Courses (CRN, Course_Name, What_year, Semester, Dept, Teacher_FN, Teacher_LN, Student_ID_1, Student_ID_2, Student_ID_3, Student_ID_4, Student_ID_5, Proj_Weight, Participation_Weight, Hw_Weight, Tests_Weight, Other_Weight) VALUES
