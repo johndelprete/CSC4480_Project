@@ -58,29 +58,20 @@ Create table Grade_List(
 );
 
 
+
 INSERT INTO Courses (CRN, Course_Name, What_year, Semester, Dept, Teacher_FN, Teacher_LN, Student_ID_1, Student_ID_2, Student_ID_3, Student_ID_4, Student_ID_5, Proj_Weight, Participation_Weight, Hw_Weight, Tests_Weight, Other_Weight) VALUES
 ('C0001', 'Intro to CS', 2026, 'Spring', 'Comp Sci', 'Alan', 'Turing', 'S0001', 'S0002', 'S0003', 'S0004', 'S0005', 20, 10, 20, 40, 10),
-('C0002', 'Database Systems', 2026, 'Spring', 'Comp Sci', 'Edgar', 'Codd', 'S0001', 'S0003', 'S0005', 'S0007', 'S0009', 30, 10, 20, 30, 10),
-('C0003', 'Web Development', 2026, 'Spring', 'IT', 'Tim', 'Berners', 'S0002', 'S0004', 'S0006', 'S0008', 'S0010', 40, 10, 20, 20, 10),
-('C0004', 'Calculus I', 2026, 'Summer', 'Math', 'Isaac', 'Newton', 'S0001', 'S0002', 'S0003', NULL, NULL, 10, 10, 30, 40, 10),
-('C0005', 'AI Ethics', 2026, 'Summer', 'Philosophy', 'Timnit', 'Gebru', 'S0004', 'S0005', 'S0006', NULL, NULL, 30, 20, 20, 20, 10),
-('C0006', 'Algorithms', 2026, 'Summer', 'Comp Sci', 'Donald', 'Knuth', 'S0007', 'S0008', 'S0009', NULL, NULL, 20, 10, 20, 40, 10),
-('C0007', 'Operating Systems', 2026, 'Fall', 'Comp Sci', 'Linus', 'Torvalds', 'S0001', 'S0005', 'S0010', NULL, NULL, 20, 10, 20, 40, 10),
-('C0008', 'Cybersecurity', 2026, 'Fall', 'Comp Sci', 'Dorothy', 'Denning', 'S0002', 'S0006', 'S0009', NULL, NULL, 25, 10, 20, 35, 10),
-('C0009', 'Networking', 2026, 'Fall', 'IT', 'Vint', 'Cerf', 'S0003', 'S0007', 'S0010', NULL, NULL, 20, 20, 20, 20, 20),
-('C0010', 'Discrete Math', 2026, 'Fall', 'Math', 'Ada', 'Lovelace', 'S0004', 'S0008', 'S0001', NULL, NULL, 15, 10, 25, 40, 10);
+('C0002', 'Database Systems', 2026, 'Spring', 'Comp Sci', 'Alan', 'Turing', 'S0001', 'S0003', 'S0005', NULL, NULL, 30, 10, 20, 30, 10),
+('C0003', 'Web Development', 2026, 'Spring', 'IT', 'Alan', 'Turing', 'S0002', 'S0004', 'S0005', NULL, NULL, 40, 10, 20, 20, 10),
+('C0004', 'Calculus I', 2026, 'Summer', 'Math', 'Alan', 'Turing', 'S0001', 'S0002', 'S0004', NULL, NULL, 10, 10, 30, 40, 10),
+('C0005', 'AI Ethics', 2026, 'Summer', 'Philosophy', 'Alan', 'Turing', 'S0003', 'S0004', 'S0005', NULL, NULL, 30, 20, 20, 20, 10);
 
 INSERT INTO Students (Student_ID, Student_FN, Student_LN, CRN_1, CRN_2, CRN_3, CRN_4, CRN_5) VALUES
-('S0001', 'Alice', 'Smith', 'C0001', 'C0002', 'C0004', 'C0007', 'C0010'),
-('S0002', 'Bob', 'Johnson', 'C0001', 'C0003', 'C0004', 'C0008', NULL),
-('S0003', 'Charlie', 'Davis', 'C0001', 'C0002', 'C0004', 'C0009', NULL),
-('S0004', 'Diana', 'Prince', 'C0001', 'C0003', 'C0005', 'C0010', NULL),
-('S0005', 'Ethan', 'Hunt', 'C0001', 'C0002', 'C0005', 'C0007', NULL),
-('S0006', 'Fiona', 'Gallagher', 'C0003', 'C0005', 'C0008', NULL, NULL),
-('S0007', 'George', 'Miller', 'C0002', 'C0006', 'C0009', NULL, NULL),
-('S0008', 'Hannah', 'Abbott', 'C0003', 'C0006', 'C0010', NULL, NULL),
-('S0009', 'Ian', 'Wright', 'C0002', 'C0006', 'C0008', NULL, NULL),
-('S0010', 'Jenny', 'Kim', 'C0003', 'C0007', 'C0009', NULL, NULL);
+('S0001', 'Alice', 'Smith', 'C0001', 'C0002', 'C0004', 'C0005', NULL),
+('S0002', 'Bob', 'Johnson', 'C0001', 'C0003', 'C0004', NULL, NULL),
+('S0003', 'Charlie', 'Davis', 'C0001', 'C0002', NULL, NULL, NULL),
+('S0004', 'Diana', 'Prince', 'C0001', 'C0002', 'C0003', 'C0004', 'C0005'),
+('S0005', 'Ethan', 'Hunt', 'C0001', 'C0003', 'C0005', NULL, NULL);
 
 INSERT INTO Grade_Nums (CRN, Student_ID) VALUES
 ('C0001', 'S0001'),
