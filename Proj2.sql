@@ -88,7 +88,7 @@ INSERT INTO Students (Student_ID, Student_FN, Student_LN, CRN_1, CRN_2, CRN_3, C
 ('S0001', 'Alice', 'Smith', 'C0001', 'C0002', 'C0003', NULL, NULL),
 ('S0002', 'Bob', 'Johnson', 'C0001', 'C0003', 'C0004', NULL, NULL),
 ('S0003', 'Charlie', 'Davis', 'C0001', 'C0002', 'C0005', NULL, NULL),
-('S0004', 'Diana', 'Prince', 'C0001', 'C0003', 'C0004', 'C0005'),
+('S0004', 'Diana', 'Prince', 'C0001', 'C0003', 'C0004', 'C0005', NULL),
 ('S0005', 'Ethan', 'Hunt', 'C0001', 'C0002', 'C0003', 'C0005', NULL);
 
 INSERT INTO Grade_Nums (CRN, Student_ID) VALUES
