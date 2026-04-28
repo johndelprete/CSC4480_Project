@@ -106,6 +106,9 @@ def join_class(cursor, connection, student_id, crn):
 def add_grade(cursor, connection, crn, student_id, grade_name, grade_type, score):
     """Logic for a teacher to add a grade."""
     try:
+        if not validate_category(cursor, crn, grade_type):
+            print("Error: Invalid category for this course.")
+            return
         cursor.execute("""
             INSERT INTO Grade_List (CRN, Student_ID, Grade_Name, Grade_Type, Grade_out_of_hund)
             VALUES (:crn, :sid, :gname, :gtype, :score)
@@ -114,6 +117,20 @@ def add_grade(cursor, connection, crn, student_id, grade_name, grade_type, score
         print("Grade added successfully!")
     except oracledb.Error as e:
         print(f"Error adding grade: {e}")
+
+def validate_category(cursor, crn, grade_type):
+    cursor.execute("""
+        SELECT 1 FROM Courses
+        WHERE CRN = :crn AND (
+            (:gtype = 'hw' AND Hw_Weight IS NOT NULL) OR
+            (:gtype = 'proj' AND Proj_Weight IS NOT NULL) OR
+            (:gtype = 'test' AND Tests_Weight IS NOT NULL) OR
+            (:gtype = 'Partic' AND Participation_Weight IS NOT NULL) OR
+            (:gtype = 'other' AND Other_Weight IS NOT NULL)
+        )
+    """, crn=crn, gtype=grade_type)
+
+    return cursor.fetchone() is not None
 
 def student_menu(cursor, connection):
     student_id = input("Enter your Student ID (e.g., S0001): ")
