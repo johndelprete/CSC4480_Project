@@ -27,11 +27,11 @@ def calculate_grade(cursor, student_id, crn, grade_type):
         # Calculate final grade based on weights in Courses table
         query = """
             SELECT 
-                NVL(AVG(CASE WHEN gl.Grade_Type = 'hw' THEN gl.Grade_out_of_hund END), 0) * (c.Hw_Weight / 100) +
-                NVL(AVG(CASE WHEN gl.Grade_Type = 'proj' THEN gl.Grade_out_of_hund END), 0) * (c.Proj_Weight / 100) +
-                NVL(AVG(CASE WHEN gl.Grade_Type = 'test' THEN gl.Grade_out_of_hund END), 0) * (c.Tests_Weight / 100) +
-                NVL(AVG(CASE WHEN gl.Grade_Type = 'Partic' THEN gl.Grade_out_of_hund END), 0) * (c.Participation_Weight / 100) +
-                NVL(AVG(CASE WHEN gl.Grade_Type = 'other' THEN gl.Grade_out_of_hund END), 0) * (c.Other_Weight / 100) AS Final_Grade
+                NVL(AVG(CASE WHEN gl.Grade_Type = 'hw' THEN gl.Grade_out_of_hund END), 0) * (NVL(c.Hw_Weight,0) / 100) +
+                NVL(AVG(CASE WHEN gl.Grade_Type = 'proj' THEN gl.Grade_out_of_hund END), 0) * (NVL(c.Proj_Weight,0) / 100) +
+                NVL(AVG(CASE WHEN gl.Grade_Type = 'test' THEN gl.Grade_out_of_hund END), 0) * (NVL(c.Tests_Weight,0) / 100) +
+                NVL(AVG(CASE WHEN gl.Grade_Type = 'Partic' THEN gl.Grade_out_of_hund END), 0) * (NVL(c.Participation_Weight,0) / 100) +
+                NVL(AVG(CASE WHEN gl.Grade_Type = 'other' THEN gl.Grade_out_of_hund END), 0) * (NVL(c.Other_Weight,0) / 100) AS Final_Grade
             FROM Courses c
             LEFT JOIN Grade_List gl ON c.CRN = gl.CRN AND gl.Student_ID = :student_id
             WHERE c.CRN = :crn
