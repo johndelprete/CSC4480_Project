@@ -131,7 +131,7 @@ def update_grade(cursor, connection, crn, student_id, grade_name, score):
 
 def validate_category(cursor, crn, grade_type):
     cursor.execute("""
-        SELECT 1 FROM Courses
+        SELECT * FROM Courses
         WHERE CRN = :crn AND (
             (:gtype = 'hw' AND Hw_Weight IS NOT NULL) OR
             (:gtype = 'proj' AND Proj_Weight IS NOT NULL) OR
