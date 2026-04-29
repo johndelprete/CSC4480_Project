@@ -12,4 +12,4 @@ If you access an existing database (or your own) that has already run the python
 
 # Features
 There are options to view the gradebook as a student or a teacher. If you enter as a student, you can view grades for a course you are already enrolled in or join an existing class. 
-If you enter as a teacher, you can view a student's grade or add a new assignment grade for a student.
+If you enter as a teacher, you can view a student's grade, add a new assignment grade for a student, or update the grade of an already existing assignment.
