@@ -118,6 +118,17 @@ def add_grade(cursor, connection, crn, student_id, grade_name, grade_type, score
     except oracledb.Error as e:
         print(f"Error adding grade: {e}")
 
+def update_grade(cursor, connection, crn, student_id, grade_name, score):
+    """Logic for a teacher to change a grade."""
+    try:
+        cursor.execute("""
+            UPDATE Grade_List SET Grade_out_of_hund = :score WHERE Student_ID = :sid and crn = :crn and grade_name = :gname         
+        """, crn=crn, sid=student_id, gname=grade_name, score=score)
+        connection.commit()
+        print("Grade changed successfully!")
+    except oracledb.Error as e:
+        print(f"Error changing grade: {e}")
+
 def validate_category(cursor, crn, grade_type):
     cursor.execute("""
         SELECT 1 FROM Courses
@@ -160,7 +171,8 @@ def teacher_menu(cursor, connection):
         print("\n--- Teacher Menu ---")
         print("1. View a Student's Grades")
         print("2. Add a Grade for a Student")
-        print("3. Return to Main Menu")
+        print("3. Update a Grade for a Student")
+        print("4. Return to Main Menu")
         choice = input("Select an option: ")
 
         if choice == '1':
@@ -178,6 +190,12 @@ def teacher_menu(cursor, connection):
             score = int(input("Enter the Score (out of 100): "))
             add_grade(cursor, connection, crn, student_id, grade_name, grade_type, score)
         elif choice == '3':
+            crn = input("Enter the CRN of the class: ")
+            student_id = input("Enter the Student ID: ")
+            grade_name = input("Enter the Assignment Name you want to change (e.g., Homework 5): ")
+            score = int(input("Enter the updated Score (out of 100): "))
+            update_grade(cursor,connection, crn, student_id, grade_name, score)
+        elif choice == '4':
             break
         else:
             print("Invalid choice.")
