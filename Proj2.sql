@@ -86,7 +86,7 @@ INSERT INTO Courses (CRN, Course_Name, What_year, Semester, Dept, Teacher_FN, Te
 INSERT INTO Courses (CRN, Course_Name, What_year, Semester, Dept, Teacher_FN, Teacher_LN, Student_ID_1, Student_ID_2, Student_ID_3, Student_ID_4, Student_ID_5, Proj_Weight, Participation_Weight, Hw_Weight, Tests_Weight, Other_Weight) VALUES ('C0004', 'Calculus I', 2026, 'Spring', 'Math', 'Alan', 'Turing', 'S0001', 'S0002', 'S0004', NULL, NULL, NULL, 5, 35, 60, NULL);
 INSERT INTO Courses (CRN, Course_Name, What_year, Semester, Dept, Teacher_FN, Teacher_LN, Student_ID_1, Student_ID_2, Student_ID_3, Student_ID_4, Student_ID_5, Proj_Weight, Participation_Weight, Hw_Weight, Tests_Weight, Other_Weight) VALUES ('C0005', 'AI Ethics', 2026, 'Spring', 'Philosophy', 'Alan', 'Turing', 'S0003', 'S0004', 'S0005', NULL, NULL, 55, 20, NULL, NULL, 25);
 
-INSERT INTO Students (Student_ID, Student_FN, Student_LN, CRN_1, CRN_2, CRN_3, CRN_4, CRN_5) VALUES ('S0001', 'Alice', 'Smith', 'C0001', 'C0002', 'C0004', NULL, NULL);
+INSERT INTO Students (Student_ID, Student_FN, Student_LN, CRN_1, CRN_2, CRN_3, CRN_4, CRN_5) VALUES ('S0001', 'Alice', 'Smith', 'C0001', 'C0002', 'C0003', NULL, NULL);
 INSERT INTO Students (Student_ID, Student_FN, Student_LN, CRN_1, CRN_2, CRN_3, CRN_4, CRN_5) VALUES ('S0002', 'Bob', 'Johnson', 'C0001', 'C0003', 'C0004', NULL, NULL);
 INSERT INTO Students (Student_ID, Student_FN, Student_LN, CRN_1, CRN_2, CRN_3, CRN_4, CRN_5) VALUES ('S0003', 'Charlie', 'Davis', 'C0001', 'C0002', 'C0005', NULL, NULL);
 INSERT INTO Students (Student_ID, Student_FN, Student_LN, CRN_1, CRN_2, CRN_3, CRN_4, CRN_5) VALUES ('S0004', 'Diana', 'Prince', 'C0001', 'C0003', 'C0004', 'C0005', NULL);
