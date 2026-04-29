@@ -8,6 +8,8 @@ After successfully downloading the module, run the program in terminal by doing 
 Student ID numbers range from S0001-S0005.
 CRN ranges from C0001-C0005.
 
+You may want to copy the `Proj2.sql` code into your own oracledb and run it so that you can access the database on your own and see the changes that are made in the tables when you run certain commands.
+
 If you access an existing database (or your own) that has already run the python script and added students to classes and grades to students, then those changes will remain in that database. If you want to reset them to what they originally were, take the SQL code (Proj2.sql), paste it into CSDB2 in Orcale and rerun it. This will reset the values to their fresh states.
 
 # Features
