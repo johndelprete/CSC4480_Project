@@ -143,13 +143,42 @@ def validate_category(cursor, crn, grade_type):
 
     return cursor.fetchone() is not None
 
+def view_student_classes(cursor, student_id):
+    """Shows the classes a student is enrolled in."""
+    cursor.execute("SELECT CRN_1, CRN_2, CRN_3, CRN_4, CRN_5 FROM Students WHERE Student_ID = :sid", sid=student_id)
+    record = cursor.fetchone()
+    if not record:
+        print("Student not found.")
+        return
+    
+    classes = [crn for crn in record if crn is not None]
+    if classes:
+        print(f"You are enrolled in: {', '.join(classes)}")
+    else:
+        print("You are not enrolled in any classes.")
+
+def view_class_students(cursor, crn):
+    """Shows the students enrolled in a specific class."""
+    cursor.execute("SELECT Student_ID_1, Student_ID_2, Student_ID_3, Student_ID_4, Student_ID_5 FROM Courses WHERE CRN = :crn", crn=crn)
+    record = cursor.fetchone()
+    if not record:
+        print("Course not found.")
+        return
+    
+    students = [sid for sid in record if sid is not None]
+    if students:
+        print(f"Students in {crn}: {', '.join(students)}")
+    else:
+        print(f"No students are currently enrolled in {crn}.")
+
 def student_menu(cursor, connection):
     student_id = input("Enter your Student ID (e.g., S0001): ")
     while True:
         print("\n--- Student Menu ---")
         print("1. View Grades")
         print("2. Join a Class")
-        print("3. Return to Main Menu")
+        print("3. View My Classes")
+        print("4. Return to Main Menu")
         choice = input("Select an option: ")
 
         if choice == '1':
@@ -162,6 +191,8 @@ def student_menu(cursor, connection):
             crn = input("Enter the CRN of the class you want to join: ")
             join_class(cursor, connection, student_id, crn)
         elif choice == '3':
+            view_student_classes(cursor, student_id)
+        elif choice == '4':
             break
         else:
             print("Invalid choice.")
@@ -172,7 +203,8 @@ def teacher_menu(cursor, connection):
         print("1. View a Student's Grades")
         print("2. Add a Grade for a Student")
         print("3. Update a Grade for a Student")
-        print("4. Return to Main Menu")
+        print("4. View Students in a Class")
+        print("5. Return to Main Menu")
         choice = input("Select an option: ")
 
         if choice == '1':
@@ -196,6 +228,9 @@ def teacher_menu(cursor, connection):
             score = int(input("Enter the updated Score (out of 100): "))
             update_grade(cursor,connection, crn, student_id, grade_name, score)
         elif choice == '4':
+            crn = input("Enter the CRN of the class: ")
+            view_class_students(cursor, crn)
+        elif choice == '5':
             break
         else:
             print("Invalid choice.")
